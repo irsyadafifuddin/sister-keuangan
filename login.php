@@ -1,7 +1,7 @@
 <?php session_start();
 ini_set('display_errors',FALSE);
 
-//koneksi
+
 include "./include/conn.php";
 $koneksi=open_connection();
 
