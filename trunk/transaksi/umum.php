@@ -101,7 +101,8 @@ if (isset($_SESSION['id_admin']))
 			<p align="center">&nbsp;</p>
 			<p>
 			<?php 
-			//jurnal baru. cari nomor paling besar yaitu nomor jurnal terakhir 
+			
+			
 			$jurnal_umum=mysql_fetch_array(mysql_query("SELECT max(nomor_jurnal) FROM jurnal_umum ORDER BY tanggal_selesai DESC"));
 			$nomor_jurnal=$jurnal_umum[0]+1;
 			$kode_transaksi="BU/".$nomor_jurnal;
