@@ -215,7 +215,7 @@ if (isset($_SESSION['id_admin']))
 			
 			
 			//untuk mendecode url yang di enrypsi
-			//$var=decode($_SERVER['REQUEST_URI']);
+			
 	
 			if(isset($_GET['mode']) && isset($_GET['id_transaksi'])){
 			
