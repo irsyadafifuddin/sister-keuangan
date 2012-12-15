@@ -11,4 +11,4 @@ if (isset($_SESSION['id_admin']))
 }else{
 	?><script language="javascript">document.location.href="index.php?status=forbidden"</script><?php 
 }
-?>
+?> 
