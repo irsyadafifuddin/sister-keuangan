@@ -2,13 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Sistem Informasi Keuangan Sekolah :: Login</title>
+<title>Halaman Login</title>
 <link href="login-box.css" rel="stylesheet" type="text/css" />
 </head>
+
 <body onLoad="document.myform.elements['username'].focus();">
 <div style="padding: 50px 100px 100px 400px;">
 	<div id="login-box">
-		<H2>Login</H2>
+		<center> <H3>Sistem Informasi Keuangan Sekolah</H3></center>
 		<?php
 	
 		if(isset($_GET['status'])){
@@ -40,6 +41,11 @@
 		<div id="login-box-field" style="margin-top:20px;"><input name="username" class="form-login" title="Username" value="" size="30" maxlength="2048" /></div>
 		<div id="login-box-name">Password:</div><div id="login-box-field"><input name="password" type="password" class="form-login" title="Password" value="" size="30" maxlength="2048" /></div>
 		<a href="javascript:;" onclick="document.myform.submit()">
+		<br>
+		</br>
+		<tr></tr>
+		<td></td>
+		
 		<img src="images/login-btn.png" width="103" height="42" style="margin-left:90px;" border="0"/>
 		</a>	
 		</form>

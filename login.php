@@ -13,8 +13,8 @@ $waktu=date("Y-m-d H:i:s");
 
 if(isset($_POST['username'])){
 
-	$username=trim($_POST['username']);
-	$password=md5($_POST['password']);
+	$username=htmlentities((trim($_POST['username'])));
+	$password=htmlentities(md5($_POST['password']));
 	
 	$login=mysql_query("select * from tabel_admin where username='$username' and password='$password'");
 	
