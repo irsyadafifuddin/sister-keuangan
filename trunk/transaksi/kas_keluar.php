@@ -1,5 +1,4 @@
 <?php 
-
 if (isset($_SESSION['id_admin']))
 {
 ?>
@@ -29,6 +28,7 @@ if (isset($_SESSION['id_admin']))
 		$('#kode').val(thisValue);
 		setTimeout("$('#suggestions').fadeOut();", 100);
 	}
+	
 	</script>
 	
 	<style>
@@ -94,24 +94,26 @@ if (isset($_SESSION['id_admin']))
 
 
 
-	<body onLoad="document.postform.elements['keterangan_transaksi'].focus();">
+	<body onLoad="document.postform.elements['keterangan_jurnal'].focus();">
 	<div class="post">
 		<div class="entry">
-			<h2 align="center"><strong>Jurnal Umum</strong></h2>
+			<h2 align="center"><strong>Jurnal Kas Keluar</strong></h2>
 			<p align="center">&nbsp;</p>
 			<p>
 			<?php 
-			//jurnal baru. cari nomor paling besar yaitu nomor jurnal terakhir 
-			$jurnal_umum=mysql_fetch_array(mysql_query("SELECT max(nomor_jurnal) FROM jurnal_umum ORDER BY tanggal_selesai DESC"));
-			$nomor_jurnal=$jurnal_umum[0]+1;
-			$kode_transaksi="BU/".$nomor_jurnal;
-			?>
-
 			
-			<form action="?page=./transaksi/umum" method="post" name="postform">
-			  <table width="435" border="0">
+			//jurnal baru. cari nomor paling besar yaitu nomor jurnal terakhir 
+			$jurnal_keluar=mysql_fetch_array(mysql_query("SELECT max(nomor_jurnal) FROM jurnal_keluar ORDER BY tanggal_selesai DESC"));
+			$nomor_jurnal=$jurnal_keluar[0]+1;
+			$kode_transaksi="KK/".$nomor_jurnal;
+			
+			?>
+			
+			
+			<form action="?page=./transaksi/kas_keluar" method="post" name="postform">
+			  <table width="512" border="0">
                 <tr>
-                  <td width="111">Nomor Bukti</td>
+                  <td width="144">Nomor Bukti</td>
                   <td colspan="2">
 				  <input type="hidden" name="kode_bukti" value="<?php echo $kode_transaksi;?>">
 				  <input type="text" disabled="disabled" value="<?php echo $kode_transaksi;?>" size="15"/>
@@ -120,20 +122,24 @@ if (isset($_SESSION['id_admin']))
                 <tr>
                   <td>Tanggal</td>
                   <td colspan="2"><input type="text" name="tanggal_transaksi" size="15" value="<?php if(empty($_POST['tanggal_transaksi'])){ echo $tanggal;}else{ echo $_POST['tanggal_transaksi']; }?>"/>
-					<a href="javascript:void(0)" onClick="if(self.gfPop)gfPop.fPopCalendar(document.postform.tanggal_transaksi);return false;" ><img src="calender/calender.jpeg" alt="" name="popcal" width="34" height="29" border="0" align="absmiddle" id="popcal" /></a>				
-				</td>
+                    <a href="javascript:void(0)" onClick="if(self.gfPop)gfPop.fPopCalendar(document.postform.tanggal_transaksi);return false;" ><img src="calender/calender.jpeg" alt="" name="popcal" width="34" height="29" border="0" align="absmiddle" id="popcal" /></a></td>
                 </tr>
                 <tr>
-                  <td>Keterangan</td>
-                  <td colspan="2"><input type="text" value="<?php if(isset($_POST['keterangan_transaksi'])){ echo $_POST['keterangan_transaksi']; }?>" name="keterangan_transaksi" size="45"/></td>
+                  <td>Keterangan Jurnal </td>
+                  <td colspan="2"><input type="text" value="<?php if(isset($_POST['keterangan_jurnal'])){ echo $_POST['keterangan_jurnal']; }?>" name="keterangan_jurnal" size="45"/></td>
                 </tr>
-                <tr>
-                  <td>Jumlah (Rp)</td>
-                  <td colspan="2"><input type="text" value="<?php if(isset($_POST['jumlah'])){ echo $_POST['jumlah']; }?>" name="jumlah_dk" size="15"/></td>
-                </tr>
+				
+				<tr><td colspan="2"></td></tr>
+				
+				<tr>
+					<td colspan="2"><b>Kode Perkiraan Sisi Debet : </b></td>
+				</tr>
+				
+				<tr><td colspan="2"></td></tr>
+				
                 <tr>
                   <td>Nomor Rekening</td>
-                  <td width="107">
+                  <td width="95">
 				  <div id="suggest">
 					   <input type="text" onKeyUp="suggest(this.value);" name="kode_rekening"  onBlur="fill2();" id="kode" size="15"/> 
 					   <div class="suggestionsBox" id="suggestions" style="display: none;"> <img src="arrow.png" style="position: relative; top: -12px; left: 30px;" alt="upArrow" />
@@ -141,15 +147,21 @@ if (isset($_SESSION['id_admin']))
 					   </div>
 				  </div>
 				  </td>
-                  <td width="203" align="left"><input type="text" disabled="disabled" name="nama_rekening" onBlur="fill();" id="country"  size="30"/></td>
+                  <td width="259" align="left"><input type="text" disabled="disabled" name="nama_rekening" onBlur="fill();" id="country"  size="30"/></td>
                 </tr>
+				
                 <tr>
-                  <td>Posisi</td>
-                  <td colspan="2"><select name="posisi">
-                    <option value="debet">Debet</option>
-                    <option value="kredit">Kredit</option>
-                  </select></td>
+                  <td>Keterangn Transaksi </td>
+                  <td colspan="2">
+				  <input type="keterangan_transaksi" value="<?php if(isset($_POST['keterangan_jurnal'])){ echo $_POST['keterangan_jurnal']; }?>" name="keterangan_transaksi" size="45">
+				  </td>
                 </tr>
+				
+				<tr>
+                  <td>Jumlah (Rp)</td>
+                  <td colspan="2"><input type="text" name="jumlah_dk" size="15"/></td>
+                </tr>
+				
                 <tr>
                   <td><input type="submit" value="Simpan" name="simpan"></td>
                   <td colspan="2">&nbsp;</td>
@@ -167,18 +179,14 @@ if (isset($_SESSION['id_admin']))
 				$tanggal_transaksi=$_POST['tanggal_transaksi'];
 				$keterangan_transaksi=ucwords($_POST['keterangan_transaksi']);
 				$kode_rekening=$_POST['kode_rekening'];
+				$keterangan_jurnal=ucwords($_POST['keterangan_jurnal']);
 				
-				$posisi=$_POST['posisi'];
+				//untuk jurnal kas keluar, semua transaksi ada sisi DEBET
 				$jumlah_dk=ucwords($_POST['jumlah_dk']);
 				
-				if($posisi=='debet'){
-					$dk='debet';
-				}else{
-					$dk='kredit';
-				}
 				
-				$query=mysql_query("insert into tabel_transaksi(kode_transaksi,kode_rekening,tanggal_transaksi, jenis_transaksi, keterangan_transaksi,".$dk.",id_admin)
-									values('$kode_transaksi','$kode_rekening','$tanggal_transaksi','Bukti Umum','$keterangan_transaksi','$jumlah_dk','$id_admin')");
+				$query=mysql_query("insert into tabel_transaksi(kode_transaksi,kode_rekening,tanggal_transaksi, jenis_transaksi, keterangan_transaksi,debet,id_admin)
+									values('$kode_transaksi','$kode_rekening','$tanggal_transaksi','Kas Keluar','$keterangan_transaksi','$jumlah_dk','$id_admin')");
 									
 				if($query){
 					//echo "berhasil";
@@ -197,102 +205,93 @@ if (isset($_SESSION['id_admin']))
 				$kode_transaksi=$_POST['kode_bukti'];
 				$nomor_jurnal=$_POST['nomor_jurnal'];
 				$tanggal_selesai=$_POST['tanggal_selesai'];
+				$tot_debet=$_POST['tot_debet'];
+				$keterangan_jurnal=$_POST['keterangan_jurnal'];
 				
+				//karena kas keluar lawan transaksinya adalah kas, maka kas adlah 111.01 yaitu kas unit umum yang ada di sisi KREDIT.
+				$kode_rekening="111.01";
 				
-				$query=mysql_query("insert into jurnal_umum(nomor_jurnal,kode_transaksi,tanggal_selesai) values('$nomor_jurnal','$kode_transaksi','$tanggal_selesai')");
+				$query_transaksi=mysql_query("insert into tabel_transaksi(kode_transaksi,kode_rekening,tanggal_transaksi, jenis_transaksi, keterangan_transaksi,kredit,id_admin)
+									values('$kode_transaksi','$kode_rekening','$tanggal_selesai','Kas Keluar','$keterangan_jurnal','$tot_debet','$id_admin')");
 									
-				if($query){
-					?><script language="javascript">document.location.href="?page=./transaksi/umum"</script><?php
+				$query_jurnal=mysql_query("insert into jurnal_keluar(nomor_jurnal,kode_transaksi,tanggal_selesai) values('$nomor_jurnal','$kode_transaksi','$tanggal_selesai')");
+									
+				if($query_transaksi){
+					?><script language="javascript">document.location.href="?page=./transaksi/kas_keluar"</script><?php
 				}else{
 					echo mysql_error();
 				}
 				
-			
+				
 			}else{
 				unset($_POST['selesai']);
 			}
 			
-			
 			//untuk mendecode url yang di enrypsi
-			
+			//$var=decode($_SERVER['REQUEST_URI']);
 	
-			if(isset($_GET['mode']) && isset($_GET['id_transaksi'])){
-			
-				//pecahkan nilai array
+			//pecahkan nilai array
+			if(isset($_GET['mode'])){
+				
 				$mode=$_GET['mode'];
 				$id_transaksi=$_GET['id_transaksi'];
 				
 				if($mode=='delete'){
 					$query=mysql_query("delete from tabel_transaksi where id_transaksi='$id_transaksi'");
+				}else{
+					echo mysql_error();
 				}
-				
+			
 			}
 			
 			
-			//untuk menampilkan data
+			//untuk menampilkan transaksi
 			?>
-			<table class="datatable">
+			<table class="datatable" border="1">
 			<tr>
-				<th>Kode Rekening</th><th>Keterangan</th><th>Debet</th><th>Kredit</th><th>Action</th>
+				<th>Kode Rekening</th><th>Keterangan</th><th>Debet</th><th>Action</th>
 			</tr>
 			<?php
-			
 			$tot_debet=0;
-			$tot_kredit=0;
-			
 			$query=mysql_query("select * from tabel_transaksi where kode_transaksi='$kode_transaksi' and id_admin='$id_admin'");
 			while($row=mysql_fetch_array($query)){
 				$debet=$row['debet'];
-				$kredit=$row['kredit'];
 				$id_transaksi=$row['id_transaksi'];
 				
 				$tot_debet=$tot_debet+$debet;
-				$tot_kredit=$tot_kredit+$kredit;
-				
 				
 				?>
 				<tr>
-					<td><?php echo $row['kode_rekening'];?></td><td><?php echo $row['keterangan_transaksi'];?></td>
+					<td><?php echo $row['kode_rekening'];?></td>
+					<td><?php echo $row['keterangan_transaksi'];?></td>
 					<td align="right"><?php if($debet!=="0"){echo number_format($debet,2,'.',',');}; ?></td>
-					<td align="right"><?php if($kredit!=="0"){echo number_format($kredit,2,'.',',');}; ?></td>
-					<td align="center"><a href="?page=./transaksi/umum&mode=delete&id_transaksi='<?php echo $id_transaksi; ?>" onClick="return confirm('Apakah Anda yakin?')">Cancel</a></td>
+					<td align="center"><a href="?page=./transaksi/kas_keluar&mode=delete&id_transaksi=<?php echo $id_transaksi; ?>" onClick="return confirm('Apakah Anda yakin?')">Cancel</a></td>
 				</tr>
 				<?php
 			}
 			?>
 			<tr>
-				<td colspan="2" align="center"><b>TOTAL</b></td><td align="right"><b><?php if(!empty($tot_debet)){ echo number_format($tot_debet,2,'.',','); } ?></b></td><td align="right"><b><?php if(!empty($tot_kredit)){ echo number_format($tot_kredit,2,'.',','); }?></b></td>
-				<td align="center">
-				<?php
-				//untuk menghitung balance
-				if(!empty($tot_debet) || !empty($tot_kredit)){
-					if($tot_debet==$tot_kredit){
-						echo "<font color='#0033FF'>Balance</font>";
-					}else{
-						echo "<font color=red>Not Balance : ".abs($tot_debet-$tot_kredit)."</font>";
-					}
-				}
-				?>
-				</td>
+				<td colspan="2" align="center"><b>TOTAL</b></td><td align="right"><b><?php echo number_format($tot_debet,2,'.',','); ?></b></td><td align="center"></td>
 			</tr>
 			</table>
 			<br />			
-			<form action="?page=./transaksi/umum" method="post" name="form">
+			<form action="?page=./transaksi/kas_keluar" method="post" name="form">
 				<input type="hidden" name="tanggal_selesai" size="15" value="<?php if(empty($_POST['tanggal_transaksi'])){ echo $tanggal;}else{ echo $_POST['tanggal_transaksi']; }?>"/>
 				<input type="hidden" name="kode_bukti" value="<?php echo $kode_transaksi;?>">
 				<input type="hidden" name="nomor_jurnal" value="<?php echo $nomor_jurnal;?>">
+				<input type="hidden" name="tot_debet" value="<?php echo $tot_debet;?>">
+				<input type="hidden" name="keterangan_jurnal" value="<?php echo $keterangan_jurnal;?>">
 				<input type="submit" onClick="return confirm('Apakah Anda Yakin?')" value="Selesai" name="selesai"/>
 			</form>
 			
-			
+
 
 			</p>
 		</div>
 	</div>
 	</body>
 	
-	<iframe width=174 height=189 name="gToday:normal:calender/agenda.js" id="gToday:normal:calender/agenda.js" src="calender/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:visible; z-index:999; position:absolute; top:-500px; left:-500px;">
-	</iframe>
+	<iframe width=174 height=189 name="gToday:normal:calender/agenda.js" id="gToday:normal:calender/agenda.js" src="calender/ipopeng.htm" scrolling="no" frameborder="0" style="visibility:visible; z-index:999; position:absolute; top:-500px; left:-500px;"></iframe>
 
 <?php 
 }else{

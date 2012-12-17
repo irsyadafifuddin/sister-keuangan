@@ -26,6 +26,6 @@ if (isset($_SESSION['id_admin']))
 
 <?php 
 }else{
-	echo "Forbidden Access!";
+	echo "Error!";
 }
 ?>

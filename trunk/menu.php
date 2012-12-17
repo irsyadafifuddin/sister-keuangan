@@ -92,14 +92,7 @@ if (isset($_SESSION['id_admin']))
 					<li><a class="" href="?page=./laporan/buku_jurnal" title="">Buku Jurnal</a></li>						
 					
 				</ul>
-			</li>
-			
-			<li class="smwid"><span><a href="javascript:;">Pengaturan </a></span>
-				<ul class="subsmwid">						
-				              			
-				<li><a href="?page=./pengaturan/profil" title="">Profil Sekolah</a></li>               			
-				</ul>
-			</li>			
+			</li>	
 			
 			<li class="smwid"><a href="logout.php" onclick="return confirm('Apakah Anda Yakin?')">Logout</a>	
 	</ul>
