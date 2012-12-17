@@ -38,7 +38,7 @@
 		<br />
 		<form action="login.php" method="post" name="myform">
 		<div id="login-box-name" style="margin-top:20px;">Username:</div>
-		<div id="login-box-field" style="margin-top:20px;"><input name="username" class="form-login" title="Username" value="" size="30" maxlength="2048" /></div>
+		<div id="login-box-field" style="margin-top:20px;"><input name="username" class="form-login" title="Username" value="Bendahara" size="30" maxlength="2048"  readonly /></div>
 		<div id="login-box-name">Password:</div><div id="login-box-field"><input name="password" type="password" class="form-login" title="Password" value="" size="30" maxlength="2048" /></div>
 		<a href="javascript:;" onclick="document.myform.submit()">
 		<br>

@@ -1,4 +1,4 @@
-//untuk jam yang on time
+//untuk jam
 function show2(){
 	if (!document.all&&!document.getElementById)
 		return

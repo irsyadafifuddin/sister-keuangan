@@ -1,11 +1,7 @@
 <?php session_start();
 
-	//untuk enkripsi
-	//include "./encryption/function.php";
-	
 	//untuk waktu
 	$tanggal=date("d/m/Y");
-	
 
 	//untuk koneksi database
 	include "./include/conn.php";
@@ -38,7 +34,9 @@ if (isset($_SESSION['id_admin']))
 				<?php include "menu.php";?>
 			</div>
 		</div>
-		<!-- end #header -->
+		
+		
+		
 		<div id="page">
 			<div id="page-bgtop">
 				<div id="page-bgbtm">
@@ -47,6 +45,7 @@ if (isset($_SESSION['id_admin']))
 					
 						<?php 
 						
+			// Menyatakan variabel sudah diset atau tidak. Jika variabel sudah diset makan variavel akan mengembalikan nilai true
 			
 						if(isset($_GET['page'])){
 						
@@ -69,9 +68,7 @@ if (isset($_SESSION['id_admin']))
 						
 						<div style="clear: both;">&nbsp;</div>
 					</div>
-					<!-- end #content -->
 					
-					<!-- end #sidebar -->
 					<div style="clear: both;">&nbsp;</div>
 				</div>
 			</div>
@@ -79,7 +76,7 @@ if (isset($_SESSION['id_admin']))
 		<!-- end #page -->
 	</div>
 	<div id="footer">
-		<p>Copyright &copy; <a href="http://romadhoni.me">Sisfor Project/</a> All rights reserved. Design by <a href="http://www.freecsstemplates.org/">CSS Open Source</a>.</p>
+		<p>Copyright &copy; <a href="http://romadhoni.me">Sisfor Project/</a> All rights reserved. Design by <a href="http://www.w3schools.com">CSS Open Source</a>.</p>
 	</div>
 	<!-- end #footer -->
 	</body>
@@ -88,6 +85,6 @@ if (isset($_SESSION['id_admin']))
 <?php 
 
 }else{
-	?><script language="javascript">document.location.href="index.php?<?php echo paramEncrypt('status=forbidden')?>"</script><?php
+	?><script language="javascript">document.location.href="index.php?<?php echo paramEncrypt('status=forbiden')?>"</script><?php
 }
 ?>
