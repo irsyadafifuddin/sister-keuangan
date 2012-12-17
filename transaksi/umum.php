@@ -31,6 +31,9 @@ if (isset($_SESSION['id_admin']))
 	}
 	</script>
 	
+	
+	// CSS Style
+	
 	<style>
 	#result {
 		height:20px;
