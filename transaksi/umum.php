@@ -97,12 +97,12 @@ if (isset($_SESSION['id_admin']))
 	<body onLoad="document.postform.elements['keterangan_transaksi'].focus();">
 	<div class="post">
 		<div class="entry">
-			<h2 align="center"><strong>Jurnal Umum</strong></h2>
+			<h2 align="center"><strong>Jurnal Kas Masuk</strong></h2>
 			<p align="center">&nbsp;</p>
 			<p>
 			<?php 
-			//jurnal baru. cari nomor paling besar yaitu nomor jurnal terakhir 
-			$jurnal_umum=mysql_fetch_array(mysql_query("SELECT max(nomor_jurnal) FROM jurnal_umum ORDER BY tanggal_selesai DESC"));
+			//jurnal baru. cari nomor paling besar yaitu sebagai acuan  nomor jurnal terakhir 
+			$jurnal_umum=mysql_fetch_array(mysql_query("SELECT max(nomor_jurnal) FROM jurnal_umum"));
 			$nomor_jurnal=$jurnal_umum[0]+1;
 			$kode_transaksi="BU/".$nomor_jurnal;
 			?>
