@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 05, 2012 at 09:22 PM
+-- Generation Time: Jan 06, 2013 at 07:01 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -33,13 +33,6 @@ CREATE TABLE IF NOT EXISTS `jurnal_keluar` (
   PRIMARY KEY (`nomor_jurnal`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `jurnal_keluar`
---
-
-INSERT INTO `jurnal_keluar` (`nomor_jurnal`, `kode_transaksi`, `tanggal_selesai`) VALUES
-(1, 'KK/1', '28/11/2012');
-
 -- --------------------------------------------------------
 
 --
@@ -66,15 +59,6 @@ CREATE TABLE IF NOT EXISTS `jurnal_umum` (
   PRIMARY KEY (`nomor_jurnal`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `jurnal_umum`
---
-
-INSERT INTO `jurnal_umum` (`nomor_jurnal`, `kode_transaksi`, `tanggal_selesai`) VALUES
-(1, 'BU/1', '28/11/2012'),
-(2, 'BU/2', '05/12/2012'),
-(3, 'BU/3', '05/12/2012');
-
 -- --------------------------------------------------------
 
 --
@@ -95,34 +79,77 @@ CREATE TABLE IF NOT EXISTS `tabel_admin` (
 --
 
 INSERT INTO `tabel_admin` (`id_admin`, `nama`, `username`, `password`, `tanggal`) VALUES
-(1, 'Muhammad Zainurromad', 'admin', '21232f297a57a5a743894a0e4a801fc3', '2012-12-05 21:21:04');
+(1, 'Muhammad Zainurromad', 'Bendahara', '21232f297a57a5a743894a0e4a801fc3', '2013-01-06 18:56:58');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tabel_profil`
+-- Table structure for table `tabel_akun`
 --
 
-CREATE TABLE IF NOT EXISTS `tabel_profil` (
-  `nama_sekolah` varchar(30) NOT NULL,
-  `gedung` varchar(30) NOT NULL,
-  `jalan` varchar(30) NOT NULL,
-  `kelurahan` varchar(30) NOT NULL,
-  `kecamatan` varchar(30) NOT NULL,
-  `propinsi` varchar(15) NOT NULL,
-  `negara` varchar(15) NOT NULL,
-  `telpon` varchar(12) NOT NULL,
-  `fax` varchar(12) NOT NULL,
-  `email` varchar(20) NOT NULL,
-  `website` varchar(20) NOT NULL
+CREATE TABLE IF NOT EXISTS `tabel_akun` (
+  `kode_rekening` varchar(10) NOT NULL DEFAULT '',
+  `nama_rekening` varchar(100) NOT NULL,
+  PRIMARY KEY (`kode_rekening`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `tabel_profil`
+-- Dumping data for table `tabel_akun`
 --
 
-INSERT INTO `tabel_profil` (`nama_sekolah`, `gedung`, `jalan`, `kelurahan`, `kecamatan`, `propinsi`, `negara`, `telpon`, `fax`, `email`, `website`) VALUES
-('SMA Negeri 2 Ngawi', 'SMA Negeri 2 Ngawi', 'Ngawi', 'Klitik', 'Geneng', 'Jawa Timur', 'Indonesia', '', '', '', '');
+INSERT INTO `tabel_akun` (`kode_rekening`, `nama_rekening`) VALUES
+('1-001  ', 'Saldo Awal Kas'),
+('2-001  ', 'SPP  '),
+('2-002  ', 'Uang Gedung  '),
+('2-003  ', 'Uang Seragam  '),
+('2-004  ', 'Uang Buku  '),
+('2-005  ', 'Uang Test'),
+('2-006  ', 'Uang Infaq Pembangunan'),
+('2-007  ', 'Uang PSB'),
+('2-008  ', 'Dana BOS'),
+('2-009  ', 'Dana Yayasan'),
+('2-010  ', 'Donatur'),
+('2-099  ', 'Lain-lain'),
+('3-110 ', 'Konsumsi  '),
+('3-111 ', 'Konsumsi Siswa  '),
+('3-112 ', ' Konsumsi Guru  '),
+('3-113 ', 'Snack Siswa'),
+('3-114 ', 'Air Minum Siswa  '),
+('3-115 ', 'Konsumsi Yayasan  '),
+('3-116 ', 'Konsumsi Tamu  '),
+('3-117 ', 'Biaya PDAM '),
+('3-118 ', 'Gaji Guru dan Karyawan  '),
+('3-119 ', 'Dana Transport & Lembur  '),
+('3-120 ', 'Biaya Listrik'),
+('3-121 ', 'Biaya Telepon'),
+('3-122 ', 'Administrasi Kantor  '),
+('3-123 ', 'Alat Tulis Kantor  '),
+('3-124 ', 'Perlengkapan Kantor  '),
+('3-125 ', 'Perlengkapan Olahraga  '),
+('3-126 ', 'Perlengkapan Kelas  '),
+('3-127 ', 'Perlengkapan Laboratorium  '),
+('3-128 ', 'Perlengkapan Perpustakaan  '),
+('3-129 ', 'Perlengkapan UKS  '),
+('3-130 ', 'FotoCopy  '),
+('3-131 ', 'Perlengkapan Elektronika  '),
+('3-132 ', 'Biaya Testing  '),
+('3-133 ', 'Penggandaan Soal  '),
+('3-134 ', 'Biaya Soal Diknas  '),
+('3-135 ', 'Kegiatan Siswa  '),
+('3-136 ', 'Kegiatan Yayasan  '),
+('3-137 ', 'Buku ke Penerbit  '),
+('3-138 ', 'Seragam ke Pemasok  '),
+('3-139 ', 'Transport dan Dinas Luar  '),
+('3-140 ', 'Kesehatan  '),
+('3-141 ', 'Dana Sosial  '),
+('3-200 ', 'Pemeliharaan  '),
+('3-201 ', 'Pemeliharan Gedung  '),
+('3-202 ', 'Pemeliharaan Peralatan  '),
+('3-220 ', 'Operasional PSB  '),
+('3-230 ', 'Piutang Sementara (Kas Bon)  '),
+('4-001 ', 'Saldo Akhir Kas  '),
+('4-002 ', 'Saldo Akhir Bank  '),
+('1-002 ', 'Saldo Awal Bank  ');
 
 -- --------------------------------------------------------
 
@@ -143,17 +170,7 @@ CREATE TABLE IF NOT EXISTS `tabel_transaksi` (
   `keterangan_posting` varchar(10) NOT NULL,
   `id_admin` int(4) NOT NULL,
   PRIMARY KEY (`id_transaksi`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=64 ;
-
---
--- Dumping data for table `tabel_transaksi`
---
-
-INSERT INTO `tabel_transaksi` (`id_transaksi`, `kode_transaksi`, `kode_rekening`, `tanggal_transaksi`, `jenis_transaksi`, `keterangan_transaksi`, `debet`, `kredit`, `tanggal_posting`, `keterangan_posting`, `id_admin`) VALUES
-(60, 'KK/1', '123456', '28/11/2012', 'Kas Keluar', 'Pembayaran SPP', 100000, 0, '28/11/2012', 'Post', 1),
-(61, 'KK/1', '111.01', '28/11/2012', 'Kas Keluar', 'Pembayaran SPP', 0, 100000, '28/11/2012', 'Post', 1),
-(62, 'BU/2', '11456', '05/12/2012', 'Bukti Umum', 'Pembayayan SPP', 130000, 0, '05/12/2012', 'Post', 1),
-(63, 'BU/3', '09718', '05/12/2012', 'Bukti Umum', 'Sponsorship', 5000000, 0, '05/12/2012', 'Post', 1);
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
