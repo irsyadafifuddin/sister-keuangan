@@ -11,7 +11,7 @@ if (isset($_SESSION['id_admin']))
 		<p>
 		<table class="datatable" border="1">
 		<tr>
-			<th>Tanggal</th><th>Kode Rekening</th><th>Keterangan</th><th>Debet</th><th>Kredit</th><th>Keterangan</th>
+			<th>Tanggal</th><th>Kode Rekening</th><th>Deskripsi</th><th>Debet</th><th>Kredit</th><th>Deskripsi</th>
 		</tr>
 		<?php
 		$query_transaksi=mysql_query("select * from tabel_transaksi order by tanggal_transaksi asc");

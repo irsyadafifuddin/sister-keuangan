@@ -124,11 +124,6 @@ if (isset($_SESSION['id_admin']))
                   <td colspan="2"><input type="text" name="tanggal_transaksi" size="15" value="<?php if(empty($_POST['tanggal_transaksi'])){ echo $tanggal;}else{ echo $_POST['tanggal_transaksi']; }?>"/>
                     <a href="javascript:void(0)" onClick="if(self.gfPop)gfPop.fPopCalendar(document.postform.tanggal_transaksi);return false;" ><img src="calender/calender.jpeg" alt="" name="popcal" width="34" height="29" border="0" align="absmiddle" id="popcal" /></a></td>
                 </tr>
-                <tr>
-                  <td>Keterangan Jurnal </td>
-                  <td colspan="2"><input type="text" value="<?php if(isset($_POST['keterangan_jurnal'])){ echo $_POST['keterangan_jurnal']; }?>" name="keterangan_jurnal" size="45"/></td>
-                </tr>
-				
 				<tr><td colspan="2"></td></tr>
 				
 				<tr>
@@ -151,7 +146,7 @@ if (isset($_SESSION['id_admin']))
                 </tr>
 				
                 <tr>
-                  <td>Keterangn Transaksi </td>
+                  <td>Deskripsi</td>
                   <td colspan="2">
 				  <input type="keterangan_transaksi" value="<?php if(isset($_POST['keterangan_jurnal'])){ echo $_POST['keterangan_jurnal']; }?>" name="keterangan_transaksi" size="45">
 				  </td>
