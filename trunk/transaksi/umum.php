@@ -124,7 +124,7 @@ if (isset($_SESSION['id_admin']))
 				</td>
                 </tr>
                 <tr>
-                  <td>Keterangan</td>
+                  <td>Deskripsi</td>
                   <td colspan="2"><input type="text" value="<?php if(isset($_POST['keterangan_transaksi'])){ echo $_POST['keterangan_transaksi']; }?>" name="keterangan_transaksi" size="45"/></td>
                 </tr>
                 <tr>
@@ -213,7 +213,7 @@ if (isset($_SESSION['id_admin']))
 			}
 			
 			
-			//untuk mendecode url yang di enkripsi
+			//untuk mendecode url yang di enrypsi
 			
 	
 			if(isset($_GET['mode']) && isset($_GET['id_transaksi'])){
