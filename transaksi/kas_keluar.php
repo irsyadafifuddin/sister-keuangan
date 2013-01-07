@@ -103,7 +103,7 @@ if (isset($_SESSION['id_admin']))
 			<?php 
 			
 			//jurnal baru. cari nomor paling besar yaitu nomor jurnal terakhir 
-			$jurnal_keluar=mysql_fetch_array(mysql_query("SELECT max(nomor_jurnal) FROM jurnal_keluar"));
+			$jurnal_keluar=mysql_fetch_array(mysql_query("SELECT max(nomor_jurnal) FROM jurnal_keluar ORDER BY tanggal_selesai DESC"));
 			$nomor_jurnal=$jurnal_keluar[0]+1;
 			$kode_transaksi="KK/".$nomor_jurnal;
 			
@@ -124,6 +124,11 @@ if (isset($_SESSION['id_admin']))
                   <td colspan="2"><input type="text" name="tanggal_transaksi" size="15" value="<?php if(empty($_POST['tanggal_transaksi'])){ echo $tanggal;}else{ echo $_POST['tanggal_transaksi']; }?>"/>
                     <a href="javascript:void(0)" onClick="if(self.gfPop)gfPop.fPopCalendar(document.postform.tanggal_transaksi);return false;" ><img src="calender/calender.jpeg" alt="" name="popcal" width="34" height="29" border="0" align="absmiddle" id="popcal" /></a></td>
                 </tr>
+                <tr>
+                  <td>Keterangan Jurnal </td>
+                  <td colspan="2"><input type="text" value="Kas Unit Umum" name="keterangan_jurnal" size="15"/></td>
+                </tr>
+				
 				<tr><td colspan="2"></td></tr>
 				
 				<tr>
@@ -146,7 +151,7 @@ if (isset($_SESSION['id_admin']))
                 </tr>
 				
                 <tr>
-                  <td>Deskripsi</td>
+                  <td>Keterangan Transaksi </td>
                   <td colspan="2">
 				  <input type="keterangan_transaksi" value="<?php if(isset($_POST['keterangan_jurnal'])){ echo $_POST['keterangan_jurnal']; }?>" name="keterangan_transaksi" size="45">
 				  </td>
@@ -203,8 +208,8 @@ if (isset($_SESSION['id_admin']))
 				$tot_debet=$_POST['tot_debet'];
 				$keterangan_jurnal=$_POST['keterangan_jurnal'];
 				
-				//karena kas keluar lawan transaksinya adalah kas, maka kas adlah 111.01 yaitu kas unit umum yang ada di sisi KREDIT.
-				$kode_rekening="111.01";
+				//karena kas keluar lawan transaksinya adalah kas, maka kas adalah 1-001  yaitu kas unit umum yang ada di sisi KREDIT.
+				$kode_rekening="1-001 ";
 				
 				$query_transaksi=mysql_query("insert into tabel_transaksi(kode_transaksi,kode_rekening,tanggal_transaksi, jenis_transaksi, keterangan_transaksi,kredit,id_admin)
 									values('$kode_transaksi','$kode_rekening','$tanggal_selesai','Kas Keluar','$keterangan_jurnal','$tot_debet','$id_admin')");
