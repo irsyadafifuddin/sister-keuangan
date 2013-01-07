@@ -76,7 +76,7 @@ if (isset($_SESSION['id_admin']))
 			}
 			?>
 			<tr>
-				<td colspan="4"><div align="center"><strong>TOTAL TRANSAKSI</strong></div></td>
+           <td colspan="4"><div align="center"><strong><b>Total Transaksi</b></strong></div></td>
 				<td align="right"><strong><?php echo number_format($total['tot_debet'],2,'.',','); ?></strong></td>
 				<td align="right"><strong><?php echo number_format($total['tot_kredit'],2,'.',','); ?></strong></td>
 			</tr>
