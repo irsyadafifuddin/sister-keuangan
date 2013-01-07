@@ -213,7 +213,7 @@ if (isset($_SESSION['id_admin']))
 			}
 			
 			
-			//untuk mendecode url yang di enrypsi
+			//untuk mendecode url yang di enkripsi
 			
 	
 			if(isset($_GET['mode']) && isset($_GET['id_transaksi'])){
