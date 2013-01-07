@@ -48,11 +48,6 @@ if (isset($_SESSION['id_admin']))
 			}
 			?>
 			
-			<?php
-			
-			include "profil_sekolah.php";
-			?>
-			
 			<h2 align="center"><strong>Buku Jurnal</strong></h2>
 			<p align="center"><font color="#333333"><?php if(!empty($tanggal2)){ echo "Periode ".$tanggal2;} ?></font></p>
 			<p align="center">&nbsp;</p>
