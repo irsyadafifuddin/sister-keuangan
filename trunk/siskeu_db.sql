@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 06, 2013 at 07:01 PM
+-- Generation Time: Jan 07, 2013 at 07:02 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -33,6 +33,14 @@ CREATE TABLE IF NOT EXISTS `jurnal_keluar` (
   PRIMARY KEY (`nomor_jurnal`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `jurnal_keluar`
+--
+
+INSERT INTO `jurnal_keluar` (`nomor_jurnal`, `kode_transaksi`, `tanggal_selesai`) VALUES
+(1, 'KK/1', '07/01/2013'),
+(2, 'KK/2', '07/01/2013');
+
 -- --------------------------------------------------------
 
 --
@@ -59,6 +67,13 @@ CREATE TABLE IF NOT EXISTS `jurnal_umum` (
   PRIMARY KEY (`nomor_jurnal`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `jurnal_umum`
+--
+
+INSERT INTO `jurnal_umum` (`nomor_jurnal`, `kode_transaksi`, `tanggal_selesai`) VALUES
+(1, 'BU/1', '07/01/2013');
+
 -- --------------------------------------------------------
 
 --
@@ -79,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `tabel_admin` (
 --
 
 INSERT INTO `tabel_admin` (`id_admin`, `nama`, `username`, `password`, `tanggal`) VALUES
-(1, 'Muhammad Zainurromad', 'Bendahara', '21232f297a57a5a743894a0e4a801fc3', '2013-01-06 18:56:58');
+(1, 'Muhammad Zainurromad', 'Bendahara', '21232f297a57a5a743894a0e4a801fc3', '2013-01-07 07:01:19');
 
 -- --------------------------------------------------------
 
@@ -98,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `tabel_akun` (
 --
 
 INSERT INTO `tabel_akun` (`kode_rekening`, `nama_rekening`) VALUES
-('1-001  ', 'Saldo Awal Kas'),
+('1-001  ', 'Kas Unit Umum'),
 ('2-001  ', 'SPP  '),
 ('2-002  ', 'Uang Gedung  '),
 ('2-003  ', 'Uang Seragam  '),
@@ -149,7 +164,7 @@ INSERT INTO `tabel_akun` (`kode_rekening`, `nama_rekening`) VALUES
 ('3-230 ', 'Piutang Sementara (Kas Bon)  '),
 ('4-001 ', 'Saldo Akhir Kas  '),
 ('4-002 ', 'Saldo Akhir Bank  '),
-('1-002 ', 'Saldo Awal Bank  ');
+('1-002 ', 'Kas di Bank');
 
 -- --------------------------------------------------------
 
@@ -170,7 +185,7 @@ CREATE TABLE IF NOT EXISTS `tabel_transaksi` (
   `keterangan_posting` varchar(10) NOT NULL,
   `id_admin` int(4) NOT NULL,
   PRIMARY KEY (`id_transaksi`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=68 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
