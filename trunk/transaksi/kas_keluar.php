@@ -132,7 +132,7 @@ if (isset($_SESSION['id_admin']))
 				<tr><td colspan="2"></td></tr>
 				
 				<tr>
-					<td colspan="2"><b>Kode Perkiraan Sisi Debet : </b></td>
+					<td colspan="2"><b>Kode Perkiraan Debet : </b></td>
 				</tr>
 				
 				<tr><td colspan="2"></td></tr>
@@ -271,7 +271,7 @@ if (isset($_SESSION['id_admin']))
 			}
 			?>
 			<tr>
-				<td colspan="2" align="center"><b>TOTAL</b></td><td align="right"><b><?php echo number_format($tot_debet,2,'.',','); ?></b></td><td align="center"></td>
+				<td colspan="2" align="center"><b>Total</b></td><td align="right"><b><?php echo number_format($tot_debet,2,'.',','); ?></b></td><td align="center"></td>
 			</tr>
 			</table>
 			<br />			
