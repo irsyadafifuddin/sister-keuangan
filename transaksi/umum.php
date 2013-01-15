@@ -165,6 +165,9 @@ if (isset($_SESSION['id_admin']))
 		
 				$kode_transaksi=$_POST['kode_bukti'];
 				$tanggal_transaksi=$_POST['tanggal_transaksi'];
+				$tgltr=explode("/",$tanggal_transaksi);
+				$tanggal_transaksi=$tgltr[2]."-".$tgltr[1]."-".$tgltr[0];
+				
 				$keterangan_transaksi=ucwords($_POST['keterangan_transaksi']);
 				$kode_rekening=$_POST['kode_rekening'];
 				
