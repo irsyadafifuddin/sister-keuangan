@@ -22,6 +22,7 @@ if (isset($_SESSION['id_admin']))
 	<title>Sistem Informasi Keuangan Sekolah :: Home</title>
 	<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
 	<script language="javascript" src="./include/jam.js"></script>
+	
 	</head>
 	<body>
 	<div id="wrapper">

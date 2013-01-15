@@ -86,6 +86,8 @@ if (isset($_SESSION['id_admin']))
 					 
 				</ul>
 			</li>
+			<li class="smwid"><a href="?page=./laporan/perkiraan" title="">Perkiraan</a></span>
+			</li>			
 			
 			<li class="smwid"><a href="javascript:;">Laporan</a>
 				<ul class="subsmwid">						
